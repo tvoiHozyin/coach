@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Иван Петров — тренер по кикбоксингу</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <header class="header">
+
+        <div class="logo">Иван Петров</div>
+
+        <nav>
+            <a href="#home">Главная</a>
+            <a href="#about">Обо мне</a>
+            <a href="#services">Услуги</a>
+            <a href="#contacts">Контакты</a>
+        </nav>
+
+    </header>
+    <div class="hero" id="home">
+
+        <div class="hero-text">
+            <h1>Иван Петров</h1>
+            <p>Персональный тренер по кикбоксингу</p>
+            <button class="button" id="signupButton">Записаться</button>
+        </div>
+
+        <div class="hero-image">
+            <img src="n2.jpg" alt="Тренер Иван">
+        </div>
+
+    </div>
+
+
+
+
+    <section id="about">
+        <h2>Обо мне</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Я тренер по кикбоксингу с опытом работы 5 лет.
+                    Помогаю улучшить физическую форму и подготовиться 
+                    к соревнованиям в кикбоксинге.
+                </p>
+                <p>Работаю с людьми разного уровня подготовки, от новичков до опытных спортсменов.
+                </p>
+            </div>
+            <div class="about-features">
+                <div class="feature">
+                    <h3>5 лет</h3>
+                    <p>опыта тренировок</p>
+                </div>
+                <div class="feature">
+                    <h3>100+</h3>
+                    <p>довольных учеников</p>
+                </div>
+                <div class="feature">
+                    <h3>Индивидуальный подход</h3>
+                    <p>к каждому ученику</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="services">
+        <h2>Услуги</h2>
+        <div class="services">  
+
+            <div class="service">
+                <h3>Персональная тренировка</h3>
+                <p>Индивидуальная работа с тренером.</p>
+                <strong>1500 ₽</strong>
+                <button class="service-button">Записаться</button>
+            </div>
+
+            <div class="service">
+                <h3>Групповая тренировка</h3>
+                <p>Тренировки в небольшой группе.</p>
+                <strong>800 ₽</strong>
+                <button class="service-button">Записаться</button>
+            </div>
+
+            <div class="service">
+                <h3>Подготовка к соревнованиям</h3>
+                <p>Подготовка к выступлениям и турнирам.</p>
+                <strong>2000 ₽</strong>
+                <button class="service-button">Записаться</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacts">
+
+        <h2>Записаться на тренировку</h2>
+
+        <div class="contacts-content">
+
+            <div class="contact-info">
+                <h3>Свяжитесь со мной</h3>
+
+                <p>
+                    Телефон:
+                    <a href="tel:+79000000000">
+                        +7 900 000-00-00
+                    </a>
+                </p>
+
+                <p>
+                    <a href="https://t.me/Buchin_08" target="_blank">
+                        Написать в Telegram
+                    </a>
+                </p>
+            </div>
+
+            <form id="signupForm">
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Ваше имя"
+                >
+
+                <input
+                    type="tel"
+                    id="phone"
+                    placeholder="Ваш телефон"
+                >
+
+                <button type="submit" class="button">
+                    Отправить заявку
+                </button>
+
+                <p id="formMessage"></p>
+
+            </form>
+
+        </div>
+
+    </section>
+    <footer class="footer">
+        <p>© 2026 Иван Петров — тренер по кикбоксингу</p>
+
+        <a href="https://t.me/Buchin_08" target="_blank">
+            Telegram
+        </a>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
