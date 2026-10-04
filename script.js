@@ -1,32 +1,44 @@
+const GOOGLE_SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbwy3vOl-NEwEygcKjD9X2eWxIun1yI6JvAALVzPxS1q4KnM6zFSB-NEj9c2E5y6rcNfOw/exec";
+
 const button = document.getElementById("signupButton");
 const serviceButtons = document.querySelectorAll(".service-button");
 
+const form = document.getElementById("signupForm");
+const nameInput = document.getElementById("name");
+const phoneInput = document.getElementById("phone");
+const serviceInput = document.getElementById("service");
+const formMessage = document.getElementById("formMessage");
+
+// Главная кнопка "Записаться"
 button.addEventListener("click", function () {
     document.getElementById("contacts").scrollIntoView({
         behavior: "smooth"
     });
 });
 
+// Кнопки услуг
 serviceButtons.forEach(function(button) {
     button.addEventListener("click", function() {
+
+        const service = button.dataset.service;
+
+        serviceInput.value = service;
+
         document.getElementById("contacts").scrollIntoView({
             behavior: "smooth"
         });
     });
 });
 
-const form = document.getElementById("signupForm");
-
-const nameInput = document.getElementById("name");
-const phoneInput = document.getElementById("phone");
-const formMessage = document.getElementById("formMessage");
-
+// Отправка формы
 form.addEventListener("submit", function(event) {
     event.preventDefault();
 
     const name = nameInput.value.trim();
     const phone = phoneInput.value.trim();
     const cleanPhone = phone.replace(/[()\-\s]/g, "");
+    const service = serviceInput.value || "Не указано";
 
     nameInput.classList.remove("input-error", "input-success");
     phoneInput.classList.remove("input-error", "input-success");
@@ -59,16 +71,40 @@ form.addEventListener("submit", function(event) {
 
     else {
 
-        formMessage.textContent = "Заявка принята!";
+        formMessage.textContent = "Отправляем заявку...";
         formMessage.classList.add("success");
 
-        nameInput.classList.add("input-success");
-        phoneInput.classList.add("input-success");
+        const data = new URLSearchParams();
 
-        form.reset();
+        data.append("name", name);
+        data.append("phone", phone);
+        data.append("service", service);
+
+        fetch(GOOGLE_SCRIPT_URL, {
+            method: "POST",
+            mode: "no-cors",
+            body: data
+        })
+        .then(function() {
+            formMessage.textContent = "Заявка отправлена!";
+            formMessage.classList.remove("error");
+            formMessage.classList.add("success");
+
+            nameInput.classList.add("input-success");
+            phoneInput.classList.add("input-success");
+
+            form.reset();
+        })
+        .catch(function() {
+            formMessage.textContent =
+                "Не удалось отправить заявку. Попробуйте ещё раз.";
+            formMessage.classList.remove("success");
+            formMessage.classList.add("error");
+        });
     }
 });
 
+// Убираем подсветку при исправлении поля
 nameInput.addEventListener("input", function() {
     nameInput.classList.remove("input-error", "input-success");
 });
